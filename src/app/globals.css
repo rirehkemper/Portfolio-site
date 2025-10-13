@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Global Styles --- */
+body {
+  color: #f7fafc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: repeating-linear-gradient(
+    rgba(255, 123, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 20px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    rgba(255, 123, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 20px
+  );
+  background-size: 40px 40px;
+  background-color: #0a0a0a;
+}
+
+/* --- Hero Glow Behind Title --- */
+@layer components {
+  .feature-card {
+    background-color: rgba(15, 23, 42, 0.6);
+    border-radius: 0.75rem; /* rounded-xl */
+    padding: 1.5rem; /* p-6 */
+    box-shadow: 0 8px 30px rgba(255, 123, 0, 0.08); /* custom glow */
+    border: 1px solid rgba(249, 115, 22, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* transition */
+    will-change: transform;
+  }
+  .feature-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(255, 123, 0, 0.15);
+  }
+}
+
+/* --- Orange Feature Boxes --- */
+/* (component styles moved into @layer components above) */
+
+/* --- Subtle Floating Animation --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.float {
+  animation: float 4s ease-in-out infinite;
+}

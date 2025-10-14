@@ -5,29 +5,28 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-  "dev:turbopack": "next dev --turbopack",
-  "dev:3000": "powershell -Command \"$env:PORT=3000; npm run dev\"",
-  "build": "npm run build:tailwind && next build --turbopack",
+    "dev:turbopack": "next dev --turbopack",
+    "dev:3000": "powershell -Command \"$env:PORT=3000; npm run dev\"",
+    "build": "npm run build:unocss && next build --turbopack",
     "start": "next start",
-    "build:tailwind": "node scripts/build-tailwind.cjs",
-    "watch:tailwind": "node scripts/watch-build-tailwind.cjs"
+    "build:unocss": "npx unocss \"src/**/*.{html,js,jsx,ts,tsx,css}\" -o public/unocss.css --minify",
+    "watch:unocss": "npx unocss \"src/**/*.{html,js,jsx,ts,tsx,css}\" -o public/unocss.css --watch"
   },
   "dependencies": {
     "@parcel/css": "^1.14.0",
     "lightningcss": "^1.30.2",
     "next": "15.5.4",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "unocss": "^66.5.3"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.14",
-    "@tailwindcss/postcss": "^4.1.14",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@unocss/preset-uno": "^66.5.3",
     "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.14",
+    "chokidar": "^4.0.3",
     "typescript": "^5.5.4"
   }
 }

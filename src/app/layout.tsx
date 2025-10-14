@@ -1,6 +1,6 @@
-import Navbar from "./components/Navbar";
-import Background from "./components/Background";
+// src/app/layout.tsx
 import type { Metadata } from "next";
+import Navbar from "./components/Navbar";
 
 export const metadata: Metadata = {
   title: "Allen Rehkemper | Portfolio",
@@ -9,15 +9,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-<html lang="en" suppressHydrationWarning>
-  <head>
-    <link rel="stylesheet" href="/tailwind.css" />
-  </head>
-  <body className="bg-black text-gray-100 pt-24">
-    <Background />
-    <Navbar />
-    {children}
-  </body>
-</html>
+    <html lang="en">
+      <head>
+        {/* Precompiled UnoCSS output */}
+        <link rel="stylesheet" href="/unocss.css" />
+        {/* Global CSS copied to public so Next won't run PostCSS on it */}
+        <link rel="stylesheet" href="/globals.css" />
+      </head>
+      <body className="bg-black text-gray-100 pt-24">
+        <Navbar />
+        {children}
+      </body>
+    </html>
   );
 }

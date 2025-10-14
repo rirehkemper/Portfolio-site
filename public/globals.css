@@ -1,3 +1,5 @@
+/* copied from src/app/globals.css to avoid PostCSS processing by Next */
+
 .matrix-grid {
   position: absolute;
   inset: 0;
@@ -59,9 +61,6 @@ body {
   transform: scale(1.05);
   box-shadow: 0 20px 40px rgba(255, 123, 0, 0.15);
 }
-
-/* --- Orange Feature Boxes --- */
-/* (component styles moved into @layer components above) */
 
 /* --- Subtle Floating Animation --- */
 @keyframes float {

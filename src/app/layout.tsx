@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar";
+import Background from "./components/Background";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,7 +13,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   <head>
     <link rel="stylesheet" href="/tailwind.css" />
   </head>
-  <body className="bg-gray-950 text-gray-100">{children}</body>
+  <body className="bg-black text-gray-100 pt-24">
+    <Background />
+    <Navbar />
+    {children}
+  </body>
 </html>
   );
 }

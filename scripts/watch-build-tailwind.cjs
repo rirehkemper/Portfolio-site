@@ -4,7 +4,6 @@ const path = require('path');
 
 const watcher = chokidar.watch([
   path.resolve(__dirname, '../src/app/globals.css'),
-  path.resolve(__dirname, '../tailwind.config.js'),
 ], { ignoreInitial: true });
 
 function build() {

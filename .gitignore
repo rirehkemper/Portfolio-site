@@ -57,4 +57,4 @@ dist
 !.env.example
 
 # If you keep the compiled CSS out of git, uncomment the next line:
-# public/tailwind.css
+public/tailwind.css

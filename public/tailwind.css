@@ -1,5 +1,8 @@
 /*! tailwindcss v4.1.14 | MIT License | https://tailwindcss.com */
 @layer properties;
+.pointer-events-none {
+  pointer-events: none;
+}
 .absolute {
   position: absolute;
 }
@@ -11,6 +14,9 @@
 }
 .z-50 {
   z-index: 50;
+}
+.mx-auto {
+  margin-inline: auto;
 }
 .flex {
   display: flex;
@@ -27,6 +33,9 @@
 .transform {
   transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
 }
+.list-none {
+  list-style-type: none;
+}
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
@@ -36,14 +45,18 @@
 .items-center {
   align-items: center;
 }
-.justify-between {
-  justify-content: space-between;
-}
 .justify-center {
   justify-content: center;
 }
 .overflow-hidden {
   overflow: hidden;
+}
+.border-b {
+  border-bottom-style: var(--tw-border-style);
+  border-bottom-width: 1px;
+}
+.bg-\[\#0a0a0a\] {
+  background-color: #0a0a0a;
 }
 .text-center {
   text-align: center;
@@ -92,26 +105,48 @@
     }
   }
 }
+@layer utilities {
+  .matrix-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        90deg,
+        rgba(0, 255, 136, 0.12) 0px,
+        rgba(0, 255, 136, 0.12) 1px,
+        transparent 1px,
+        transparent 32px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 136, 0.08) 0px,
+        rgba(0, 255, 136, 0.08) 1px,
+        transparent 1px,
+        transparent 32px
+      );
+    background-size: 60px 60px;
+    animation: matrixPulse 6s ease-in-out infinite alternate;
+  }
+  @keyframes matrixPulse {
+    0% {
+      background-size: 66px 66px;
+      opacity: 0.50;
+    }
+    100% {
+      background-size: 54px 54px;
+      opacity: 0.70;
+    }
+  }
+}
 body {
   color: #f7fafc;
+  background-color: #000;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: repeating-linear-gradient(
-    rgba(255, 123, 0, 0.03) 1px,
-    transparent 1px,
-    transparent 20px
-  ),
-  repeating-linear-gradient(
-    90deg,
-    rgba(255, 123, 0, 0.03) 1px,
-    transparent 1px,
-    transparent 20px
-  );
-  background-size: 40px 40px;
-  background-color: #0a0a0a;
 }
 @layer components {
   .feature-card {
@@ -159,6 +194,11 @@ body {
   syntax: "*";
   inherits: false;
 }
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
 @property --tw-duration {
   syntax: "*";
   inherits: false;
@@ -186,6 +226,7 @@ body {
       --tw-rotate-z: initial;
       --tw-skew-x: initial;
       --tw-skew-y: initial;
+      --tw-border-style: solid;
       --tw-duration: initial;
       --tw-scale-x: 1;
       --tw-scale-y: 1;

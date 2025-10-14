@@ -2,27 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .matrix-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    /* stronger matrix overlay for better visibility on dark backgrounds */
+    background:
+      repeating-linear-gradient(
+        90deg,
+        rgba(0, 255, 136, 0.12) 0px,
+        rgba(0, 255, 136, 0.12) 1px,
+        transparent 1px,
+        transparent 32px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 136, 0.08) 0px,
+        rgba(0, 255, 136, 0.08) 1px,
+        transparent 1px,
+        transparent 32px
+      );
+    background-size: 60px 60px;
+    animation: matrixPulse 6s ease-in-out infinite alternate;
+  }
+
+  @keyframes matrixPulse {
+    0% {
+      background-size: 66px 66px;
+      opacity: 0.50;
+    }
+    100% {
+      background-size: 54px 54px;
+      opacity: 0.70;
+    }
+  }
+}
+
 /* --- Global Styles --- */
 body {
   color: #f7fafc;
+  background-color: #000; /* ensure true black fallback */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: repeating-linear-gradient(
-    rgba(255, 123, 0, 0.03) 1px,
-    transparent 1px,
-    transparent 20px
-  ),
-  repeating-linear-gradient(
-    90deg,
-    rgba(255, 123, 0, 0.03) 1px,
-    transparent 1px,
-    transparent 20px
-  );
-  background-size: 40px 40px;
-  background-color: #0a0a0a;
 }
 
 /* --- Hero Glow Behind Title --- */

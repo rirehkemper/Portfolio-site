@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <main className="w-full flex flex-col items-center justify-center text-center px-6 py-20 space-y-8">
-      <h1 className="text-5xl font-extrabold text-accent glow-text">
+      <h1 className="text-5xl font-extrabold text-white">
         Building Intelligent Systems That Make Life Easier
       </h1>
 

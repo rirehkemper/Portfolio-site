@@ -23,15 +23,13 @@
   animation: matrixPulse 6s ease-in-out infinite alternate;
 }
 
-@keyframes matrixPulse {
-  0% {
-    background-size: 66px 66px;
-    opacity: 0.50;
-  }
-  100% {
-    background-size: 54px 54px;
-    opacity: 0.70;
-  }
+@keyframes gradientShift {
+ 0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+  50% { background-position: 100% 50%; filter: hue-rotate(20deg); }
+  100% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+}
+.animate-gradient {
+  animation: gradientShift 20s ease-in-out infinite;
 }
 
 /* --- Global Styles --- */

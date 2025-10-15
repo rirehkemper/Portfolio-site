@@ -1,34 +1,17 @@
+// Background.tsx
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
 
 export default function Background() {
-  const [host, setHost] = useState<HTMLElement | null>(null);
+  return (
+    <div className="fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+      {/* animated gradient wash (semi-transparent for diagnostics) */}
+      <div className="absolute inset-0 animate-gradient bg-[linear-gradient(120deg,#001a00cc,#003300aa,#005500aa,#003300cc)] bg-[length:400%_400%]" />
 
-  useEffect(() => {
-    const el = document.createElement("div");
-    el.id = "__background-root";
-    // ensure the host fills the viewport and sits below the navbar
-    el.style.position = "fixed";
-    el.style.inset = "0";
-  // keep the background behind the main UI (nav should sit above)
-  el.style.zIndex = "0";
-    el.style.pointerEvents = "none";
-    document.body.appendChild(el);
-    setHost(el);
-    return () => {
-      if (el.parentNode) el.parentNode.removeChild(el);
-    };
-  }, []);
-
-  if (!host) return null;
-
-  return createPortal(
-    <>
-      <div className="absolute inset-0 bg-[#0a0a0a] pointer-events-none" />
-      <div className="absolute inset-0 matrix-grid pointer-events-none" />
-    </>,
-    host
+      <div
+        className="absolute bottom-0 right-0 w-[85vw] h-[85vh] bg-no-repeat bg-contain opacity-90 mix-blend-screen z-50 pointer-events-none"
+        style={{ backgroundImage: "url('/cubes-bg.png')", backgroundPosition: 'bottom right' }}
+      />
+    </div>
   );
 }
